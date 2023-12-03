@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "87IALHK9XAjF39H3a7Bcn8XV+6GKbzq4uTV/TTPm4y4=",
+  "Source": "Inveon.Services.ChatHubAPI",
+  "BasePath": "_content/Inveon.Services.ChatHubAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
