@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SideBar from './SideBar'
 import ProductCard from '../Common/Product/ProductCard'
 import { useSelector } from "react-redux";
+import TopHeader from '../Common/Header/TopHeader';
 
 
 const LeftSideBar = () => {
@@ -9,11 +10,12 @@ const LeftSideBar = () => {
     const [products, setProducts] = useState(useSelector((state) => state.products.products))
     const [page, setPage] = useState(1)
     let allData = [...useSelector((state) => state.products.products)];
+    const [filters,setFilters] = useState([null,null,10000]);
     
 
     const randProduct = (page) => {
         if(page){
-            let data = allData.sort((a, b) => 0.5 - Math.random())
+            let data = products.sort((a, b) => 0.5 - Math.random())
             setProducts(data);
             setPage(page);
         }
@@ -22,28 +24,46 @@ const LeftSideBar = () => {
     const filterProducts = (query,parameter) => {
         // Filter by category
         if(parameter == 0){
-            if(query != "All"){
-                const filtered = allData.filter(product => product.categoryName.toLowerCase() === query.toLowerCase());
-                setProducts(filtered);
-            }
-            else{
-                setProducts(allData);
-            }
+            query === "All" ? filters[0]=null : filters[0] = query;
+            setFilters(filters);
+            applyAllFilters();
 
         }
         // Filter by name
         else if(parameter == 1){
-            setProducts(allData.filter(product =>
-                product.name.toLowerCase().includes(query.toLowerCase())));
+            query === "" ? filters[1] = null : filters[1] = query;
+            filters[1] = query;
+            setFilters(filters);
+            applyAllFilters();
 
         }
         // Filter by price
         else if(parameter == 2){
-            setProducts(allData.filter(product =>
-                product.price <= query));
+            filters[2] = query;
+            setFilters(filters);
+            applyAllFilters();
 
         }
       
+    }
+
+    const applyAllFilters = ()=>{
+        var filteredData = allData;
+
+        if(filters[0]){
+            filteredData = filteredData.filter(data=> data.categoryName === filters[0]);
+        }
+
+        if(filters[1] != null){
+            filteredData = filteredData.filter(data=> data.name.toLowerCase().includes( filters[1].toLowerCase()));
+            
+        }
+
+        filteredData = filteredData.filter(data=> data.price <= filters[2]);
+
+        setProducts(filteredData);
+
+
     }
 
 

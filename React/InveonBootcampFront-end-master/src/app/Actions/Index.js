@@ -150,7 +150,7 @@ export const getUserBasket = createAsyncThunk('cart/getUserBasket', async (user)
       'Access-Control-Allow-Methods': 'PUT, POST, GET, DELETE, PATCH, OPTIONS',
       'Access-Control-Max-Age': '1800',
     };
-
+    console.log(user.user_id);
     const response = await axios.get(`https://localhost:5050/api/cart/${user.user_id}`, { headers });
 
     const responseData = response.data;
@@ -177,6 +177,7 @@ export const getUserBasket = createAsyncThunk('cart/getUserBasket', async (user)
 
 
 export const addToMyBasket = createAsyncThunk('cart/addToMyBasket', async ({ user, product, count }) => {
+
   let cartHeader = {
     CartHeaderId: 0,
     UserId: user.user_id,
@@ -357,13 +358,10 @@ export const checkout = createAsyncThunk('cart/checkout', async ({ user,cartHead
 );
 
 export const getAllOrders = createAsyncThunk('orders/getAllOrders', async ({adminUser}) => {
-  console.log("here");
-  console.log(adminUser.role);
-  console.log(adminUser.access_token);
   const headers = {
     'Authorization': `Bearer ${adminUser.access_token}`,
   };
-  const response = await axios.get(`/api/orders/all`, { baseURL: 'https://localhost:5050'}).catch(error => {
+  const response = await axios.get(`https://localhost:5050/api/orders/all`,{headers}).catch(error => {
       console.error("API Error:", error);
       throw error; // Throw the error again to trigger the rejection of the promise
     });
@@ -373,7 +371,7 @@ export const getAllOrders = createAsyncThunk('orders/getAllOrders', async ({admi
   return response.data;
 });
 
-export const getAllUserOrders = createAsyncThunk('orders/getAllUserOrders', async ({user}) => {
+export const getAllUserOrders = createAsyncThunk('orders/getAllUserOrders', async (user) => {
   const headers = {
     'Authorization': `Bearer ${user.access_token}`
   };
@@ -386,3 +384,20 @@ export const getAllUserOrders = createAsyncThunk('orders/getAllUserOrders', asyn
   console.log(response.data);
   return response.data;
 });
+
+
+export const handleReceivedMessage = createAsyncThunk(
+  'chat/handleReceivedMessage',
+  async (message) => {
+    return {message:message};
+  }
+);
+
+export const handleConnectionEstablisment = createAsyncThunk(
+  'chat/handleConnectionEstablisment',async (connection) => {
+    return {connection:connection};
+  }
+
+
+
+)

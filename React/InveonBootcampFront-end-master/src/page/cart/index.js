@@ -8,7 +8,7 @@ const Cart = () => {
     return (
         <>
             <Header/>
-            <Banner title="Alışveriş Sepeti" />
+            <Banner title="Shopping Basket" />
             <CartArea/>
             <Footer/>
 

@@ -10,12 +10,12 @@ const ContactTwoArea = () => {
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="contact_form_one contact_info_wrapper">
-                                <h3 className="text-center">Bize Ulaşın</h3>
-                                <form onSubmit={(e)=> {e.preventDefault(); Swal.fire('Teşekkürler', 'Mesajınızı Bize Ulaştı', 'success')}}>
+                                <h3 className="text-center">Contact Us</h3>
+                                <form onSubmit={(e)=> {e.preventDefault(); Swal.fire('Thank You', 'Your Message Has Been Sent', 'success')}}>
                                     <div className="row">
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
-                                                <input type="text" className="form-control" name="name" placeholder="Adınız Soyadınız" required/>
+                                                <input type="text" className="form-control" name="name" placeholder="Name and Surname" required/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
@@ -25,20 +25,20 @@ const ContactTwoArea = () => {
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
-                                                <input type="number" className="form-control" name="phone" placeholder="Telefon" required/>
+                                                <input type="number" className="form-control" name="phone" placeholder="Phone Number" required/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div className="form-group">
-                                                <input type="text" className="form-control" name="subject" placeholder="Konu" required/>
+                                                <input type="text" className="form-control" name="subject" placeholder="Subject" required/>
                                             </div>
                                         </div>
                                         <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                                             <div className="form-group">
-                                                <textarea rows="7" className="form-control" name="message" placeholder="Mesajınızı"></textarea>
+                                                <textarea rows="7" className="form-control" name="message" placeholder="Your Message"></textarea>
                                             </div>
                                             <div className="submit_bitton_contact_one">
-                                                <button value="Submit" className="theme-btn-one btn-black-overlay btn_md">Gönder</button>
+                                                <button value="Submit" className="theme-btn-one btn-black-overlay btn_md">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@ const ContactTwoArea = () => {
                                         </div>
                                         <div className="contact_widget">
                                             <i className="fa fa-globe"></i>
-                                            <Link to="/">BtShop.com</Link>
+                                            <Link to="/">info.gloffofficial.com</Link>
                                         </div>
                                     </li>
                                 </ul>

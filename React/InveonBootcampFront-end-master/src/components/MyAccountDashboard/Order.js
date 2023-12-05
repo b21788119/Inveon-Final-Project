@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Order = () => {
     let allOrders = useSelector((state) => state.orders.allUserOrders);
+    const thStyle = {
+        verticalAlign: 'middle',
+      };
     const calculateTotal = (order)=>{
         var total = 0;
         order.orderDetails.forEach(detail => {
@@ -14,35 +17,47 @@ const Order = () => {
     }
     return (
         <>
-            <div className="myaccount-content">
-                <h4 className="title">My Orders </h4>
-                <div className="table_page table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Order Date</th>
-                                <th>Order Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {allOrders.map(order => (
-                            <tr>
-                                <td>{order.orderHeaderId}</td>
+        <div className="container mt-4"> 
+            <div className="row justify-content-center"> 
+                <div className="col-md-12">
+                <div class="card">
+            <div className="card-header" >
+                My Orders
+            </div>
+            <div className="card-body">
+            <table className="table">
+                    <thead>
+                        <tr>
+                        <th style={thStyle} scope="col">Order ID</th>
+                        <th style={thStyle} scope="col">Order Date</th>
+                        <th style={thStyle} scope="col">Order Total</th>
+                        <th style={thStyle} scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {allOrders.map(order => (
+                        <tr key={order.orderHeaderId}>
+                            <td>{order.orderHeaderId}</td>
                                 <td>{new Date(order.orderTime).toLocaleString('en-US')}</td>
                                 <td>{calculateTotal(order)} TL</td>
                                 <td>
-                                <Link  type="button" to={`/order-details/${order.orderHeaderId}`} class="btn btn-outline-success">Details    
+                                <Link  type="button" to={`/order-details/${order.orderHeaderId}`} className="btn btn-outline-success">Details    
                                 </Link></td>
-                            </tr>
-
+                        </tr>
                         ))}
-                            
-                        </tbody>
-                    </table>
-                </div>
+                    
+                    </tbody>
+        </table>   
             </div>
+            </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        
         </>
     )
 }

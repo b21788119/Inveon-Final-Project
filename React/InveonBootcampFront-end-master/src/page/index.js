@@ -14,17 +14,9 @@ const Fashion = () => {
     let dispatch = useDispatch();
     let status = useSelector((state) => state.user.status);
     let user = useSelector((state) => state.user.user);
-    let favorites = useSelector((state) => state.products.favoriteProducts);
-   
-
-    useEffect(() => {
-        if(status && favorites.length === 0)
-        {
-            dispatch(getAllFavorites(user))
-            dispatch(getUserBasket(user));
-        }
-     
-      },[dispatch]);
+    let basketLock = useSelector((state) => state.shoppingCard.lock);
+    let favoritesLock = useSelector((state) => state.products.lock);
+    
     return(
         <div>
             <TopHeader />

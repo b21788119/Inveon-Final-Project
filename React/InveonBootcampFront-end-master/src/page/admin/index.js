@@ -11,6 +11,7 @@ const AdminPanel = () => {
     let allOrders = useSelector((state) => state.orders.allOrders);
     let allProducts = useSelector((state) => state.products.products);
     const [tabControl,setTab] = useState("true");
+
     const thStyle = {
         verticalAlign: 'middle',
       };
@@ -133,16 +134,16 @@ const AdminPanel = () => {
             <Header />
             
             <div className="card text-center">
-                <div className="card-header">
+                <div className="card-header" style={{backgroundColor:"White"}}>
                     <ul className="nav nav-tabs card-header-tabs">
                     <li className="nav-item">
                     <Link className= {`nav-link ${tabControl==="true" ? "active" : ""}`} onClick={()=>handleOrderTabClick()} aria-current={tabControl}>
-                        Siparişler
+                        Orders
                     </Link>
                     </li>
                     <li className="nav-item">
                     <Link className={`nav-link ${tabControl==="false" ? "active" : ""}`} onClick={()=>handleProductTabClick()} aria-current={tabControl === "true" ? "false" : "true"} >
-                        Ürünler
+                        Products
                     </Link>
                     </li>
                     </ul>

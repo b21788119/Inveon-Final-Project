@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import svg from '../../../assets/img/svg/cancel.svg'
 import logoWhite from '../../../assets/img/logo-white.png'
-import mylogo from '../../../assets/img/logo2.svg'
+import mylogo from "../../../assets/img/logo.png"
 import svgsearch from '../../../assets/img/svg/search.svg'
 import Swal from 'sweetalert2'
 import { removeFromFavoriteList,getAllFavorites,
@@ -17,7 +17,6 @@ import { removeFromFavoriteList,getAllFavorites,
 const Header = () => {
     let carts = useSelector((state) => state.shoppingCard.carts);
     let itemCount = useSelector((state) => state.shoppingCard.totalCount);
-    let cartTotal = useSelector((state) => state.shoppingCard.totalPrice);
     let detailsMap = useSelector((state) => state.shoppingCard.detailsMap);
     let favorites = useSelector((state) => state.products.favorites);
     let favoriteProducts = useSelector((state) => state.products.favoriteProducts);
@@ -31,6 +30,38 @@ const Header = () => {
 
     const handleShow = () => setShowModal(true);
 
+    const cartTotal = ()=>{
+        var total = 0;
+        Array.from(detailsMap.values()).map((data)=>{
+            total+= (data.count*data.product.price);
+
+        })
+        return total;
+    }
+
+    const getNaveItems = () => {
+        if (status && user.role !== "Admin") {
+          return (
+            <>
+              {MenuData.map((item, index) => (
+                <NaveItems item={item} key={index} />
+              ))}
+            </>
+          );
+        } else if (!status) {
+          return (
+            <>
+              {MenuData.map((item, index) => (index !== 3 ? <NaveItems item={item} key={index} /> : null))}
+            </>
+          );
+        } else if (status && user.role === "Admin") {
+          return (
+            <>
+              {MenuData.map((item, index) => (index === 0 ? <NaveItems item={item} key={index} /> : null))}
+            </>
+          );
+        }
+      };
 
     const removeFromTheBasket = (detailsId,productId) => {
         dispatch(removeFromBasket({user:user,cartDetailsId:detailsId,productId:productId}));
@@ -98,7 +129,7 @@ const Header = () => {
                                 <div className="col-12 d-flex align-items-center justify-content-between">
                                     <div className="header-logo">
                                         <div className="logo">
-                                            <Link to="/"><img  style={{ width: "70px", height: "70px"}}  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNKGgiElo2ufEwYRWyO0bCZTQixOyyQGyJGg&usqp=CAU" alt="my basket"/></Link>
+                                            <Link to="/"><img  style={{ width: "150px", height: "75px"}}  src={logo}/></Link>
                                         </div>
                                     </div>
                                     {/* Burası menüyü oluşturan bölüm */}
@@ -106,9 +137,7 @@ const Header = () => {
                                         <nav>
                                             <ul>
                                                 {/* MenuData nın içindeki her bir json objesi için li oluşturulur */}
-                                                {MenuData.map((item, index) => (
-                                                    <NaveItems item={item} key={index} />
-                                                ))}
+                                                {getNaveItems()}
                                             </ul>
                                         </nav>
                                     </div>
@@ -116,7 +145,7 @@ const Header = () => {
                                     <li>
                                             <a type="button" onClick={()=>{setShowModal(true)}} className="offcanvas-toggle" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                    ><i className="fa fa-comment">
-                                                    </i><span className="item-count">0</span></a>
+                                                    </i></a>
                                         </li>
                                         <li>
                                             {favorites.length
@@ -140,11 +169,7 @@ const Header = () => {
                                                     </i><span className="item-count">{itemCount}</span></a>
                                             }
                                         </li>
-                                        <li>
-                                            <a href="#search" className="search_width" onClick={handleSearch} >
-                                                <img src={svgsearch} alt="img" />
-                                            </a>
-                                        </li>
+
                                         <li>
                                             <a href="#offcanvas-about" className="offacnvas offside-about 
                                             offcanvas-toggle" onClick={handleabout}>
@@ -170,7 +195,7 @@ const Header = () => {
                                     <li>
                                         <Link to="/">
                                             <div className="logo">
-                                                <img  style={{ width: "70px", height: "70px"}}  src={mylogo} alt="my basket"/>
+                                                <img  style={{ width: "150px", height: "70px"}}  src={mylogo} alt="my basket"/>
                                             </div>
                                         </Link>
                                     </li>
@@ -255,9 +280,9 @@ const Header = () => {
                             </li>
                         </ul>
                         <ul className="user-link">
-                            <li><Link to="/wishlist">Favoriler</Link></li>
-                            <li><Link to="/cart">Alışveriş Sepeti</Link></li>
-                            <li><Link to="/checkout-two">Alışverişi Tamamla</Link></li>
+                            <li><Link to="/wishlist">Favorites</Link></li>
+                            <li><Link to="/cart">Shopping List</Link></li>
+                            <li><Link to="/checkout-two">Complete Order</Link></li>
                         </ul>
                     </div>
 
@@ -294,9 +319,9 @@ const Header = () => {
                         </li>
                     </ul>
                     <ul className="user-link">
-                        <li><Link to="/wishlist">Favoriler</Link></li>
-                        <li><Link to="/cart">Alışveriş Sepeti</Link></li>
-                        <li><Link to="/checkout-two">Alışverişi Tamamla</Link></li>
+                        <li><Link to="/wishlist">Favorites</Link></li>
+                        <li><Link to="/cart">Shopping Basket</Link></li>
+                        <li><Link to="/checkout-two">Complete Order</Link></li>
                     </ul>
                 </div>
             </div>
@@ -309,7 +334,7 @@ const Header = () => {
                     </button>
                 </div>
                 <div className="offcanvas-add-cart-wrapper">
-                    <h4 className="offcanvas-title">Alışveriş Sepeti</h4>
+                    <h4 className="offcanvas-title">Shopping Basket</h4>
                     <ul className="offcanvas-cart">
                         {Array.from(detailsMap.values()).map((data, index) => (
                             <li className="offcanvas-wishlist-item-single" key={index}>
@@ -340,17 +365,17 @@ const Header = () => {
                         ))}
                     </ul>
                     <div className="offcanvas-cart-total-price">
-                        <span className="offcanvas-cart-total-price-text">Toplam :</span>
-                        <span className="offcanvas-cart-total-price-value">{cartTotal}.00 TL</span>
+                        <span className="offcanvas-cart-total-price-text">Total :</span>
+                        <span className="offcanvas-cart-total-price-value">{cartTotal()}.00 TL</span>
                     </div>
                     <ul className="offcanvas-cart-action-button">
                         <li>
                             <Link to="/cart" className="theme-btn-one btn-black-overlay btn_md">
-                                Sepeti Görüntüle</Link>
+                                Show Basket</Link>
                         </li>
                         <li>
                             <Link to="/checkout-two" className="theme-btn-one btn-black-overlay btn_md">
-                                Alışverişi Tamamla</Link>
+                                Complete Order</Link>
                         </li>
                     </ul>
                 </div>
@@ -364,7 +389,7 @@ const Header = () => {
                     </button>
                 </div>
                 <div className="offcanvas-wishlist-wrapper">
-                    <h4 className="offcanvas-title">Favoriler</h4>
+                    <h4 className="offcanvas-title">Favorites</h4>
 
                     <ul className="offcanvas-wishlist">
                         {favoriteProducts.map((data, index) => (
@@ -396,7 +421,7 @@ const Header = () => {
                     <ul className="offcanvas-wishlist-action-button">
                         <li>
                             <Link to="/wishlist" className="theme-btn-one btn-black-overlay btn_md">
-                                Favori Listesi</Link>
+                                Favorites List</Link>
                         </li>
                     </ul>
                 </div>
@@ -410,7 +435,7 @@ const Header = () => {
                     Swal.fire('Success', 'Sonuçlara göz atın', 'success'); history('/shop/shop-left-sidebar');
                 }}>
                     <input type="search" placeholder="Ürün adı, markası." required id='searchDeneme' />
-                    <button type="submit" className="btn btn-lg btn-main-search">Ara</button>
+                    <button type="submit" className="btn btn-lg btn-main-search">Search</button>
                 </form>
             </div>
         </div>

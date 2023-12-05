@@ -12,6 +12,8 @@ const productsSlice = createSlice({
         favorites: [],
         favoriteProducts:[],
         single: ProductData[0],  
+        lock:false,
+        productLock:false,
     },
     reducers: {
         AddToCart: (state, action) => {
@@ -57,6 +59,7 @@ const productsSlice = createSlice({
             .addCase(getAllProducts.fulfilled, (state, action) => {
                 state.loading = false;
                 state.products = action.payload.result;
+                state.productLock = true;
 
             })
             .addCase(getAllProducts.rejected, (state, action) => {
@@ -82,6 +85,7 @@ const productsSlice = createSlice({
                 });
                 state.favoriteProducts = allFavorites;
                 state.favorites = temporary;
+                state.lock = true;
                 
             })
             .addCase(addNewFavorite.pending, (state) => {

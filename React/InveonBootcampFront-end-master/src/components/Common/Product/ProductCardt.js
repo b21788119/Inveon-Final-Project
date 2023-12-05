@@ -29,13 +29,13 @@ const ProductCard = (props) => {
                     </span>
                    </span>
                    <div className="actions">
-                     <a href="#!" className="action wishlist" title="Favorilere Ekle"
+                     <a href="#!" className="action wishlist" title="Add to Favorites"
                       onClick={() => favorilereEkle(props.data.id)} ><AiOutlineHeart />
 
                      </a>
                  </div>
                  <button type="button" className="add-to-cart offcanvas-toggle" 
-                    onClick={() => sepeteEkle(props.data.id)} >Sepete Ekle</button>
+                    onClick={() => sepeteEkle(props.data.id)} >Add to Cart</button>
              </div>
              <div className="content">
                 <h5 className="title">

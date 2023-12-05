@@ -3,6 +3,7 @@ using Inveon.Services.OrderAPI.Models;
 using Inveon.Services.OrderAPI.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Inveon.Services.OrderAPI.Controllers
 {
@@ -21,6 +22,7 @@ namespace Inveon.Services.OrderAPI.Controllers
 
 
         [HttpGet("all")]
+        [Authorize(Roles = "Admin")]
         public async Task<object> GetOrdersWithDetails()
         {
             try

@@ -8,10 +8,8 @@ const CustomerOrder = () => {
     return (
         <>
             <Header />
-            <Banner title="Müşteri Paneli" />
-            <Layout>
-                <Order />
-            </Layout>
+            <Banner title="Customer Panel" />
+            <Order />
             <Footer />
         </>
     )

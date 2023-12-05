@@ -4,6 +4,7 @@ import settingsReducer from "./slices/settings";
 import userReducer from "./slices/user";
 import ordersReducer from "./slices/order";
 import shoppingcartReducer from "./slices/shoppingCard";
+import chatReducer from "./slices/chat";
 
 export const store = configureStore ( {
     reducer : {
@@ -12,7 +13,7 @@ export const store = configureStore ( {
         shoppingCard:shoppingcartReducer,
         settings : settingsReducer,
         orders : ordersReducer,
-
+        chat : chatReducer,
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

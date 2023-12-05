@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import React, { useEffect } from "react"
 import { useSelector, useDispatch }  from "react-redux";
-import { getProductByID,addNewFavorite,removeFromFavoriteList} from "../../../app/Actions/Index";
+import { getProductByID,addNewFavorite,removeFromFavoriteList,addToMyBasket} from "../../../app/Actions/Index";
 import { useParams } from 'react-router-dom';
 import { RatingStar } from "rating-star";
 
@@ -15,23 +15,34 @@ const ProductDetailsTwo = () => {
     let dispatch = useDispatch();
     const productId = useParams();
     const product_id = productId.id;
-    let favoriteProducts = useSelector((state) => state.products.favorites);
+    let favoriteProducts = useSelector((state) => state.products.favoriteProducts);
+    let favoriteProductIds = useSelector((state) => state.products.favorites);
     let user = useSelector((state) => state.user.user);
+    let products = useSelector((state) => state.products.products);
+    let product = products.filter(product=>product.productId == parseInt(product_id))[0];
 
+    const [count, setCount] = useState(1)
+    const incNum = () => {
+        setCount(count + 1)
+    }
 
-    useEffect(() => {
-        dispatch(getProductByID(product_id));
-    });
-
-    let product = useSelector((state) => state.products.single);
+    const decNum = () => {
+        if (count > 0) {
+            setCount(count - 1)
+        } else {
+            alert("Stokta Yok!")
+            setCount(0)
+        }
+    }
+    
 
     // Add to cart
-    const addToCart = async (id) => {
-        dispatch({ type: "products/AddToCart", payload: { productId } })
+    const addToCart = async () => {
+       dispatch(addToMyBasket({user:user,product:product,count:count}));
     }
 
     const isFavorite = () =>{
-        return favoriteProducts.includes(parseInt(product_id));
+        return favoriteProductIds.includes(parseInt(product_id));
     }
 
     const getStyle = () => {
@@ -47,21 +58,6 @@ const ProductDetailsTwo = () => {
         dispatch(removeFromFavoriteList({user:user,productId:id,_action:'remove'}));
     }
 
-
-    // Quenty Inc Dec
-    const [count, setCount] = useState(1)
-    const incNum = () => {
-        setCount(count + 1)
-    }
-
-    const decNum = () => {
-        if (count > 0) {
-            setCount(count - 1)
-        } else {
-            alert("Stokta Yok!")
-            setCount(0)
-        }
-    }
 
     let settings = {
         arrows: true,
@@ -107,7 +103,7 @@ const ProductDetailsTwo = () => {
                                     <h3>{product.name}</h3>
                                     <div className="reviews_rating">
                                         <RatingStar maxScore={5} rating={5} id="rating-star-common-2" />
-                                        <span>({123} Müşteri Yorumları)</span>
+                                        <span>({123} Customer Comments)</span>
                                     </div>
                                     <h4>{product.price}.00 TL <del>{parseInt(product.price) + 20}.00 TL</del> </h4>
                                     <p>{product.description}</p>
@@ -139,7 +135,7 @@ const ProductDetailsTwo = () => {
                                          
                                         </ul>
                                         <a href="#!" className="theme-btn-one btn-black-overlay btn_sm"
-                                         onClick={() => addToCart(product.productId)}>Sepete Ekle</a>
+                                         onClick={() => addToCart(product.productId)}>Add To Cart</a>
                                     </div>
 
                                 </div>
@@ -154,9 +150,8 @@ const ProductDetailsTwo = () => {
                 <div className="row">
                     <div className="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12 col-12">
                         <div className="empaty_cart_area">
-                            <img src={product.imageUrl} alt="img" />
-                            <h2>Ürün Bulunamadı</h2>
-                            <Link to="/shop" className="btn btn-black-overlay btn_sm">Alışverişe Devam</Link>
+                            <h2>Product Is Not Found</h2>
+                            <Link to="/shop" className="btn btn-black-overlay btn_sm">Continue Shopping</Link>
                         </div>
                     </div>
                 </div>

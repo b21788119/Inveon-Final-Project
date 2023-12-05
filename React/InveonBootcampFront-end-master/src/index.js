@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import "./assets/css/modal.css"
 import "./assets/css/chat.css"
+import "./assets/css/card.css"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {store} from './app/store';

@@ -14,11 +14,13 @@ builder.Services.AddSignalR();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost3000",
-        builder => builder.WithOrigins("http://localhost:3000")
-                          .AllowAnyMethod()
-                          .AllowAnyHeader()
-                          .AllowCredentials());
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
 });
 
 
@@ -32,7 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowLocalhost3000");
+app.UseCors();
 app.UseRouting();
 
 app.UseHttpsRedirection();
@@ -40,10 +42,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapControllers();
-        endpoints.MapHub<ChatHub>("/chat");
-    }
+    { endpoints.MapControllers();
+    endpoints.MapHub<ChatHub>("/chatting");}
 ); 
     
 

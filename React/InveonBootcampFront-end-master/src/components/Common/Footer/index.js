@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
-import logo from '../../../assets/img/logo.png'
-import mylogo from '../../../assets/img/logo2.svg'
+import mylogo from  "../../../assets/img/logo.png"
 import payment from '../../../assets/img/common/payment.png'
 import { Link } from 'react-router-dom'
 import Cookie from '../Cookie'
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux";
-import Swal from 'sweetalert2'
 
 const FooterData = [
     {
-        title: "BİLGİ",
+        title: "Info",
         links: [
             { linkTitle: "Home Page", link: "/" },
             { linkTitle: "About Us", link: "/about" },
@@ -81,13 +79,11 @@ const Footer = () => {
                     <div className="row">
                         <div className="col-lg-4 col-md-12 col-sm-12 col-12">
                             <div className="footer_left_side">
-                                <Link to="/" ><img  style={{ width: "70px", height: "70px"}}  src={mylogo} alt="my basket"/></Link>
+                                <Link to="/" ><img  style={{ width: "150px", height: "70px"}}  src={mylogo} alt="my basket"/></Link>
                                 <p>
                                     <strong>
-                                        BT SHOP</strong> çok satıcılı bir B2C hızlı e-ticaret şirketidir. Şirket ağırlıklı olarak erkek,
-                                    kadın ve çocuk giyimine odaklanmaktadır.
-                                    ama aynı zamanda başka giysiler, giysiler, aksesuarlar, ayakkabılar,
-                                    çantalar ve diğer moda ürünleri de sunuyoruz.
+                                        GLOFF </strong> is the world's most useful and easy to use fashion network.
+                                        Become a part of a network of networks.
                                 </p>
                                 <div className="footer_left_side_icon">
                                     <ul>
@@ -135,29 +131,7 @@ const Footer = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="col-lg-3 col-md-12 col-sm-12 col-12">
-                            <div className="footer_one_widget">
-                                <h3>Bülten</h3>
-                                <div id="mc_embed_signup" className="subscribe-form">
-                                    <form
-                                        onSubmit={(e) => {
-                                            e.preventDefault();
-                                            Swal.fire('Success', 'Üye olduğunuz için teşekkür ederiz', 'success');
-                                            document.querySelector("input[type='email']").value = ""
-                                        }}>
-                                        <div className="mc-form">
-                                            <input className="form-control"
-                                                type="email" placeholder="Email Adresiniz" name="EMAIL"
-                                                defaultValue="" required />
-                                            <div className="clear">
-                                                <button className="theme-btn-one btn_md"
-                                                    type="submit" name="subscribe" defaultValue=""> Email Gönder</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div className="go-top active" onClick={() => { window.scrollTo(0, 0) }}>
@@ -171,7 +145,7 @@ const Footer = () => {
                     <div className="row">
                         <div className="col-lg-6 col-md-6 col-sm-6 col-12">
                             <div className="copyright_left">
-                                <h6>© CopyRight 2022 <span>Bt Shop</span></h6>
+                                <h6>© CopyRight 2023 <span>GLOFF Official</span></h6>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-6 col-12">

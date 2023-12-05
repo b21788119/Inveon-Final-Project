@@ -4,17 +4,26 @@ import TotalCart from './TotalCart'
 import { Link } from 'react-router-dom'
 import img from '../../assets/img/common/empty-cart.png'
 import { useDispatch, useSelector } from "react-redux";
+import { removeFromBasket } from "../../app/Actions/Index";
+
 
 const CartArea = () => {
     let dispatch = useDispatch();
-    let carts = useSelector((state) => state.products.carts);
+    let carts = useSelector((state) => state.shoppingCard.detailsMap);
+    let user = useSelector((state)=> state.user.user);
+
     // Remove from Cart
-    const rmProduct = (id) => {
+    const removeProduct = (id) => {
         dispatch({ type: "products/removeCart", payload: { id } });
     }
     // Clear
     const clearCarts = () => {
-        dispatch({ type: "products/clearCart" });
+        Array.from(carts.values()).forEach((cart)=>{
+            console.log(cart.productId);
+            console.log("here");
+            dispatch(removeFromBasket({user:user,cartDetailsId:cart.cartDetailsId,productId:cart.productId}));
+
+        })
     }
     // Value Update
     const cartValUpdate = (val, id) => {
@@ -23,7 +32,7 @@ const CartArea = () => {
 
     return (
         <>
-            {carts.length
+            {Array.from(carts.values()).length
                 ?
                 <section id="cart_area_one" className="ptb-100">
                     <div className="container">
@@ -34,35 +43,35 @@ const CartArea = () => {
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th className="product_remove">Kaldır</th>
-                                                    <th className="product_thumb">Resim</th>
-                                                    <th className="product_name">Ürün</th>
-                                                    <th className="product-price">Fiyat</th>
-                                                    <th className="product_quantity">Miktar</th>
-                                                    <th className="product_total">Toplam</th>
+                                                    <th className="product_remove">Remove</th>
+                                                    <th className="product_thumb">Picture</th>
+                                                    <th className="product_name">Product</th>
+                                                    <th className="product-price">Price</th>
+                                                    <th className="product_quantity">Count</th>
+                                                    <th className="product_total">Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {carts.map((data, index) => (
+                                                {Array.from(carts.values()).map((data, index) => (
                                                     <tr key={index}>
                                                         <td className="product_remove">
-                                                            <i className="fa fa-trash text-danger" onClick={() => rmProduct(data.id)} style={{ 'cursor': 'pointer' }}></i>
+                                                            <i className="fa fa-trash text-danger" onClick={() => removeProduct(data.productId)} style={{ 'cursor': 'pointer' }}></i>
                                                         </td>
                                                         <td className="product_thumb">
                                                             <Link to={`/product-details-one/${data.id}`}>
-                                                                <img src={data.img} alt="img" />
+                                                                <img src={data.product.imageUrl} alt="img" />
                                                             </Link>
                                                         </td>
                                                         <td className="product_name">
-                                                            <Link to={`/product-details-one/${data.id}`}>
-                                                                {data.title}
+                                                            <Link to={`/product-details-one/${data.productId}`}>
+                                                                {data.product.name}
                                                             </Link>
                                                         </td>
-                                                        <td className="product-price">{data.price}.00 TL</td>
+                                                        <td className="product-price">{data.product.price}.00 TL</td>
                                                         <td className="product_quantity">
-                                                            <input min="1" max="100" type="number" onChange={e => cartValUpdate(e.currentTarget.value, data.id)} defaultValue={data.quantity || 1} />
+                                                            <input min="1" max="100" type="number" onChange={e => cartValUpdate(e.currentTarget.value, data.product.productId)} defaultValue={data.count || 1} />
                                                         </td>
-                                                        <td className="product_total">{data.price * (data.quantity || 1)}.00 TL</td>
+                                                        <td className="product_total">{data.product.price * (data.count || 1)}.00 TL</td>
                                                     </tr>
                                                 ))
 
@@ -71,15 +80,14 @@ const CartArea = () => {
                                         </table>
                                     </div>
                                     <div className="cart_submit">
-                                        {carts.length
-                                            ? <button className="theme-btn-one btn-black-overlay btn_sm" type="button" onClick={() => clearCarts()}>Sepeti Temizle</button>
+                                        {Array.from(carts.values()).length
+                                            ? <button className="theme-btn-one btn-black-overlay btn_sm" type="button" onClick={() => clearCarts()}>Clear Basket</button>
                                             : null
                                         }
 
                                     </div>
                                 </div>
                             </div>
-                            <Coupon />
                             <TotalCart />
                         </div>
                     </div>
@@ -89,9 +97,8 @@ const CartArea = () => {
                         <div className="row">
                             <div className="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12 col-12">
                                 <div className="empaty_cart_area">
-                                    <img src={img} alt="img" />
-                                    <h2>SEPETİNİZ BOŞ</h2>
-                                    <Link to="/shop" className="btn btn-black-overlay btn_sm">Alışverişe Devam</Link>
+                                    <h2>Your Basket Is Empty</h2>
+                                    <Link to="/shop" className="btn btn-black-overlay btn_sm">Continue Shopping</Link>
                                 </div>
                             </div>
                         </div>

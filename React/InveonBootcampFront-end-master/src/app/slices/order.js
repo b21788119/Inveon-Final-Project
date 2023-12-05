@@ -6,7 +6,9 @@ const ordersSlice = createSlice({
     initialState: {
         userOrders: [],
         allOrders:[],
-        allUserOrders:[]
+        allUserOrders:[],
+        lock:false,
+        
     },
     reducers: {
        
@@ -20,6 +22,7 @@ const ordersSlice = createSlice({
             .addCase(getAllOrders.fulfilled, (state, action) => {
                 state.loading = false;
                 state.allOrders = action.payload.result;
+                state.lock = true;
             })
             .addCase(getAllOrders.rejected, (state, action) => {
                 state.loading = false;
@@ -32,7 +35,7 @@ const ordersSlice = createSlice({
             .addCase(getAllUserOrders.fulfilled, (state, action) => {
                 state.loading = false;
                 state.allUserOrders = action.payload.result;
-                console.log(state.allUserOrders);
+                state.lock = true;
             })
             .addCase(getAllUserOrders.rejected, (state, action) => {
                 state.loading = false;

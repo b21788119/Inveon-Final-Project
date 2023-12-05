@@ -308,18 +308,18 @@ ul li {
 }
 
 #common_banner_one {
-    background-image: url('https://wallpapercave.com/wp/wp3646146.jpg');
+    background-image: url('https://media.gq-magazine.co.uk/photos/5f11c9505c7c349fdae82d51/16:9/w_2560%2Cc_limit/20200717-roundup-trends-13.jpg');
     padding: 90px 0;
     background-repeat: no-repeat;
 }
 
 .common_banner_text {
     text-align: center;
-    color: #fff;
+    color: #F5FFFA;
 }
 
 .common_banner_text h2 {
-    color: #fff;
+    color: #F5FFFA;
 }
 
 .common_banner_text ul {
@@ -329,11 +329,11 @@ ul li {
 }
 
 .common_banner_text ul li {
-    color: #fff;
+    color: #F5FFFA;
 }
 
 .common_banner_text ul li.active {
-    color: var(--main-theme-color);
+    color: #F5FFFA;
 }
 
 .common_banner_text ul li.slash {
@@ -342,11 +342,11 @@ ul li {
 }
 
 .common_banner_text ul li a {
-    color: #fff;
+    color:#F5FFFA;
 }
 
 .common_banner_text ul li a:hover {
-    color: var(--main-theme-color);
+    color: #F5FFFA;
 }
 
 
@@ -2011,7 +2011,7 @@ button {
 ---------------------------*/
 
 #banner_one {
-    background-image: url('https://img.freepik.com/premium-vector/men-style-sale-promotion-banner-template_99493-77.jpg');
+    background-image: url('https://img.freepik.com/free-photo/purchase-sale-discount-fashion-style_53876-15282.jpg?w=1380&t=st=1701646279~exp=1701646879~hmac=2d0fe154c8eb8586ac9fae1271ad7773356aaeda0e302a5f5f6f7e769908d4a9');
     padding: 200px 0;
     display: flex;
     align-items: center;
@@ -4427,7 +4427,7 @@ table {
 }
 
 .table_desc {
-    border: 1px solid #ededed;
+    border: 1px solid #DCDCDC;
 }
 
 .table_page table thead tr:last-child th,
@@ -4436,13 +4436,12 @@ table {
 }
 
 .table-responsive table thead {
-    background: var(--main-theme-color);
+    background: #F5F5F5;
 }
 
 .table_page table thead tr th {
-    color: #fff;
-    border-bottom: 3px solid var(--main-theme-color);
-    border-right: 1px solid #ededed;
+    color: black;
+    border-right: 1px solid #DCDCDC;
     font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;
@@ -4451,8 +4450,8 @@ table {
 }
 
 .table_page table tbody tr td {
-    border-bottom: 1px solid #ededed;
-    border-right: 1px solid #ededed;
+    border-bottom: 1px solid #DCDCDC;
+    border-right: 1px solid #DCDCDC;
     text-align: center;
     padding: 10px;
 }
@@ -4466,7 +4465,7 @@ table {
 }
 
 .order_table table tbody tr td {
-    border-left: 2px solid #ededed;
+    border-left: 2px solid #DCDCDC;
 }
 
 .product_stock h6 {
@@ -4514,7 +4513,7 @@ table {
     height: 40px;
     padding: 0 5px 0 10px;
     background: none;
-    border: 1px solid #ededed;
+    border: 1px solid #DCDCDC;
 }
 
 .table_page table tbody tr td.product_addcart {
@@ -4527,16 +4526,16 @@ table {
 }
 
 .coupon_code {
-    border: 1px solid #ededed;
+    border: 1px solid #DCDCDC;
     margin-top: 60px;
 }
 
 .coupon_code h3,
 .coupon_code .h3 {
-    color: #ffffff;
+    color: black;
     line-height: 36px;
     padding: 5px 15px;
-    background: var(--main-theme-color);
+    background: #F5F5F5;
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 600;
@@ -4725,7 +4724,7 @@ table {
 .order_table thead th {
     border-bottom-width: 1px;
     font-weight: 600;
-    color: #fff;
+    color: black;
 }
 
 .order_table tbody td {
@@ -4826,7 +4825,7 @@ table {
 }
 
 .order_review .table-responsive table thead {
-    background: var(--main-theme-color);
+    background: #F5F5F5;
     text-align: center;
 }
 
@@ -4943,8 +4942,8 @@ table {
     line-height: 30px;
     padding: 5px 10px;
     text-transform: uppercase;
-    color: #fff;
-    background: var(--main-theme-color);
+    color: black;
+    background: #F5F5F5;
     font-weight: 500;
 }
 
@@ -4954,10 +4953,12 @@ table {
 
 .checkout_form_area form {
     padding-top: 20px;
+    border: #DCDCDC;
 }
 
 .checkout_form_area form .default-form-box {
     padding-bottom: 20px;
+    border: #DCDCDC;
 }
 
 .order_table table thead tr th {
@@ -5012,7 +5013,7 @@ table {
 }
 
 .checkout_area_two .table-responsive table thead {
-    background: #000;
+    background: #F5F5F5;
 }
 
 
@@ -7612,7 +7613,7 @@ table {
     margin-right: 6px;
     height: 22px;
     border-radius: 50%;
-    background: #f79837;
+    background:#800000;
 }
 
 .after_login i {
@@ -8258,7 +8259,7 @@ table {
 
 .pharmacy_product_text p del {
     padding-left: 10px;
-    color: #f798378c;
+    color: #8000008c;
 }
 
 .pharmacy_product_icon {

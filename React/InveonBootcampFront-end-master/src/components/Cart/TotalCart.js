@@ -3,7 +3,17 @@ import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
 
 const TotalCart = (props) => {
-    let carts = useSelector((state) => state.products.carts);
+    let carts = useSelector((state) => state.shoppingCard.detailsMap);
+
+
+    const calculateTotal = ()=>{
+        var total = 0;
+        Array.from(carts.values()).forEach(detail => {
+            total+= (detail.product.price * detail.count);
+            
+        });
+        return total;
+    }
 
     const cartTotal = () => {
         return carts.reduce(function (total, item) {
@@ -13,56 +23,55 @@ const TotalCart = (props) => {
     return (
         <>
             {props.fullGrid ? (
-                <div className="col-lg-12 col-md-12">
-                    <div className="coupon_code right">
-                        <h3>Toplam : </h3>
+                <div className="col-lg-9">
+                    <div className="table thead">
+                        <h3>Total : </h3>
                         <div className="coupon_inner">
                             <div className="cart_subtotal">
-                                <p>Alt Toplam : </p>
-                                <p className="cart_amount">${cartTotal()}.00</p>
+                                <p>Sub Total : </p>
+                                <p className="cart_amount">${calculateTotal()}.00</p>
                             </div>
                             <div className="cart_subtotal ">
-                                <p>Kargo</p>
-                                <p className="cart_amount"><span>Sabit Fiyat</span> 00 TL</p>
+                                <p>Shipping Fee : </p>
+                                <p className="cart_amount"><span>Fixed Price:</span> 15 TL</p>
                             </div>
-                            <a href="#!">Kargo Hesapla</a>
 
                             <div className="cart_subtotal">
-                                <p>Toplam</p>
-                                <p className="cart_amount">${cartTotal()}.00</p>
+                                <p>Total : </p>
+                                <p className="cart_amount">${calculateTotal()+15}.00</p>
                             </div>
                             <div className="checkout_btn">
 
                                 <Link to="/checkout-one" className="theme-btn-one btn-black-overlay btn_sm">
-                                    Alışverişi Tamamla
+                                    Complete Order
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             ) : (
-                <div className="col-lg-6 col-md-6">
+                <div className="col-lg-9">
                        <div className="coupon_code right">
-                        <h3>Toplam : </h3>
+                        <h3>Total : </h3>
                         <div className="coupon_inner">
                             <div className="cart_subtotal">
-                                <p>Alt Toplam : </p>
-                                <p className="cart_amount">{cartTotal()}.00 TL</p>
+                                <p>Sub Total : </p>
+                                <p className="cart_amount">{calculateTotal()}.00 TL</p>
                             </div>
                             <div className="cart_subtotal ">
-                                <p>Kargo</p>
-                                <p className="cart_amount"><span>Sabit Fiyat</span> 00 TL</p>
+                                <p>Shipping Fee :</p>
+                                <p className="cart_amount"><span>Fixed Price :</span> 15 TL</p>
                             </div>
-                            <a href="#!">Kargo Hesapla</a>
+                    
 
                             <div className="cart_subtotal">
-                                <p>Toplam</p>
-                                <p className="cart_amount">{cartTotal()}.00 TL</p>
+                                <p>Total :</p>
+                                <p className="cart_amount">{calculateTotal()+15}.00 TL</p>
                             </div>
                             <div className="checkout_btn">
 
                                 <Link to="/checkout-two" className="theme-btn-one btn-black-overlay btn_sm">
-                                    Alışverişi Tamamla
+                                    Complete Order
                                 </Link>
                             </div>
                         </div>

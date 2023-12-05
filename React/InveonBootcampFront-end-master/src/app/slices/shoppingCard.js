@@ -12,14 +12,14 @@ const detailsMapping = new Map();
 
 
 const shoppingcartSlice = createSlice({
-    name: 'cart',
+    name: 'shoppingCard',
     initialState: {
         carts: [],
         detailsMap : detailsMapping,
         totalCount : 0,
         totalPrice:0,
         lastOrderSuccess:false,
-        //single: ProductData[0],  // her bir ürün temsil eder
+        lock:false,
     },
     reducers: {
         AddToCart: (state, action) => {
@@ -39,7 +39,8 @@ const shoppingcartSlice = createSlice({
         },
         
         clearCart: (state) => {
-            state.carts = []
+            state.carts = [];
+            state.detailsMap.clear();
         }
 
     },
@@ -60,10 +61,11 @@ const shoppingcartSlice = createSlice({
                         details.forEach(element => {
                         temporaryMap.set(element.productId,element)
                         counter += element.count;
-                        //state.totalPrice+= element.product.price * element.count;
                     });
                     state.detailsMap = temporaryMap;
                     state.totalCount = counter;
+                    state.lock = true;
+                    console.log(temporaryMap);
     
                     }catch(error){
                         console.log(error);
@@ -119,6 +121,7 @@ const shoppingcartSlice = createSlice({
                 state.loading = false;
                 state.lastOrderSuccess = true;
                 state.detailsMap.clear();
+                state.totalCount = 0;
                 
             })
             .addCase(checkout.rejected, (state, action) => {

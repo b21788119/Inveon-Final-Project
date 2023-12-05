@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import img from '../../assets/img/common/empty-cart.png'
 import Swal from 'sweetalert2';
+import { removeFromBasket } from '../../app/Actions/Index';
 
 const CartViewTwo = () => {
 
     let dispatch = useDispatch();
     let carts = useSelector((state) => state.products.carts);
     // Remove Product
-    const rmProduct = (id) => {
+    const removeProduct = (id) => {
         dispatch({ type: "products/removeCart", payload: { id } });
     }
     // Clear Cart
     const clearCarts = () => {
-        dispatch({ type: "products/clearCart" });
+        dispatch({ type: "shoppingCard/clearCart" });
     }
     // Cart Val Update
     const cartValUpdate = (val, id) => {
@@ -70,7 +71,7 @@ const CartViewTwo = () => {
                                                             </div>
                                                         </td>
                                                         <td className="product_total">${data.price * (data.quantity || 1)}.00</td>
-                                                        <td className="product_remove"><a href="#!" onClick={() => rmProduct(data.id)} style={{ 'cursor': 'pointer' }}><i className="fa fa-trash text-danger"></i></a></td>
+                                                        <td className="product_remove"><a href="#!" onClick={() => removeProduct(data.id)} style={{ 'cursor': 'pointer' }}><i className="fa fa-trash text-danger"></i></a></td>
                                                     </tr>
                                                 ))}
 
@@ -97,7 +98,6 @@ const CartViewTwo = () => {
                         <div className="row">
                             <div className="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12 col-12">
                                 <div className="empaty_cart_area">
-                                    <img src={img} alt="img" />
                                     <h2>YOUR CART IS EMPTY</h2>
                                     <h3>Sorry Mate... No Item Found Inside Your Cart!</h3>
                                     <Link to="/shop" className="btn btn-black-overlay btn_sm">Continue Shopping</Link>

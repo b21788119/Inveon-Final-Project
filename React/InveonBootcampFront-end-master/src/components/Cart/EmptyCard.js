@@ -11,7 +11,6 @@ const EmptyCart = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12 col-12">
                             <div className="empaty_cart_area">
-                                <img src={img} alt="img" />
                                 <h2>SEPETİNİZ BOŞ</h2>
                                 <Link to="/shop" className="btn btn-black-overlay btn_md">Alışverişe Devam</Link>
                             </div>

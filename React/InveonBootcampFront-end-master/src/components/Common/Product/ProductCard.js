@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {AiOutlineHeart} from 'react-icons/ai';
 import { removeFromFavoriteList, addNewFavorite,addToMyBasket } from "../../../app/Actions/Index";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const ProductCard = (props) => {
     let dispatch=  useDispatch();
@@ -16,6 +17,7 @@ const ProductCard = (props) => {
     
     const addToBasket = async() => {
         dispatch(addToMyBasket({user:user,product:props.data,count:1}));
+        
     }
 
     const isFavorite = () =>{
@@ -23,7 +25,7 @@ const ProductCard = (props) => {
     }
 
     const getStyle = () => {
-        return isFavorite() ? {backgroundColor : "#f79837",color:"white"} : {backgroundColor : "",color:"black"};
+        return isFavorite() ? {backgroundColor : "#f79837",color:"white"} : {backgroundColor : "",color:"#f79837"};
 
     }
     
@@ -50,12 +52,12 @@ const ProductCard = (props) => {
                     </span>
                 </span>
                 <div className="actions">
-                    <button style = {getStyle()} className="action wishlist" title="Favorilere Ekle" onClick={isFavorite() ? () => removeFromFavorites(props.data.productId) : ()=>addToFavorites(props.data.productId)
+                    <button style = {getStyle()} className="action wishlist" title="Add to Favorites" onClick={isFavorite() ? () => removeFromFavorites(props.data.productId) : ()=>addToFavorites(props.data.productId)
                     }><AiOutlineHeart/>
                     </button>
                 </div>
                 <button type="button" className="add-to-cart offcanvas-toggle" onClick={()=>addToBasket()}>
-                    Sepete Ekle
+                    Add to Cart
                 </button>
              </div>
              <div className="content">

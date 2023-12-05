@@ -2,68 +2,80 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import img from '../../assets/img/common/empty-cart.png'
+import { removeFromFavoriteList } from "../../app/Actions/Index";
 
 const WishArea = () => {
     let dispatch = useDispatch();
-    let favorilerdekiUrunler = useSelector((state) => state.products.favorites);
+    let favoriteProducts = useSelector((state) => state.products.favoriteProducts);
+    let user = useSelector((state) => state.user.user);
+    
+    
     // Remove from Cart
-    const rmProduct = (id) => {
-        dispatch({ type: "products/removeToFav", payload: { id } });
+    const removeProduct = (id) => {
+        dispatch(removeFromFavoriteList({user:user,productId:id,_action:'remove'}));
     }
     // Clear
-    const clearFav = () => {
-        dispatch({ type: "products/clearFav" });
+    const clearFavoriteList = () => {
+        Array.from(favoriteProducts.values()).forEach((product)=>{
+            dispatch(removeFromFavoriteList({user:user,productId:product.productId,_action:'remove'}));
+    
+        })
     }
 
 
     return (
         <>
-            {favorilerdekiUrunler.length
+            {favoriteProducts.length
                 ?
                 <section id="cart_area_one" className="ptb-100">
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div className="table_desc">
+                                <div >
                                     <div className="table_page table-responsive">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th className="product_remove">Kaldır</th>
-                                                    <th className="product_thumb">Resim</th>
-                                                    <th className="product_name">Ürün</th>
-                                                    <th className="product-price">Fiyat</th>
+                                    <div class="card">
+                                        <div class="card-body">
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {favorilerdekiUrunler.map((data, index) => (
-                                                    <tr key={index}>
-                                                        <td className="product_remove">
-                                                            <i className="fa fa-trash text-danger" onClick={() => rmProduct(data.id)} style={{ 'cursor': 'pointer' }}></i>
-                                                        </td>
-                                                        <td className="product_thumb">
-                                                            <Link to={`/product-details-one/${data.id}`}>
-                                                                <img src={data.img} alt="img" />
-                                                            </Link>
-                                                        </td>
-                                                        <td className="product_name">
-                                                            <Link to={`/product-details-one/${data.id}`}>
-                                                                {data.title}
-                                                            </Link>
-                                                        </td>
-                                                        <td className="product-price">{data.price}.00 TL</td>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th >Remove</th>
+                                                        <th >Image</th>
+                                                        <th >Product</th>
+                                                        <th >Price</th>
 
                                                     </tr>
-                                                ))
+                                                </thead>
+                                                <tbody>
+                                                    {Array.from(favoriteProducts.values()).map((data, index) => (
+                                                        <tr key={index}>
+                                                            <td className="product_remove">
+                                                                <i className="fa fa-trash text-danger" onClick={() => removeProduct(data.productId)} style={{ 'cursor': 'pointer' }}></i>
+                                                            </td>
+                                                            <td className="product_thumb">
+                                                                <Link to={`/product-details-one/${data.productId}`}>
+                                                                    <img src={data.productDto.imageUrl} alt="img" />
+                                                                </Link>
+                                                            </td>
+                                                            <td className="product_name">
+                                                                <Link to={`/product-details-one/${data.productId}`}>
+                                                                    {data.productDto.name}
+                                                                </Link>
+                                                            </td>
+                                                            <td className="product-price">{data.productDto.price}.00 TL</td>
 
-                                                }
-                                            </tbody>
-                                        </table>
+                                                        </tr>
+                                                    ))
+
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                     </div>
                                     <div className="cart_submit">
-                                        {favorilerdekiUrunler.length
-                                            ? <button className="theme-btn-one btn-black-overlay btn_sm" type="button" onClick={() => clearFav()}>Favorileri Temizle</button>
+                                        {favoriteProducts.length
+                                            ? <button className="theme-btn-one btn-black-overlay btn_sm" type="button" onClick={() => clearFavoriteList()}>Clear List</button>
                                             : null
                                         }
 
@@ -79,9 +91,8 @@ const WishArea = () => {
                         <div className="row">
                             <div className="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-12 col-12">
                                 <div className="empaty_cart_area">
-                                    <img src={img} alt="img" />
-                                    <h2>Favoriniz YOK</h2>
-                                    <Link to="/shop" className="btn btn-black-overlay btn_sm">Alışverişe Devam</Link>
+                                    <h2>No Favorites</h2>
+                                    <Link to="/shop" className="btn btn-black-overlay btn_sm">Continue Shopping</Link>
                                 </div>
                             </div>
                         </div>

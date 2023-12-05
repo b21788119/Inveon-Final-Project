@@ -39,14 +39,14 @@ const YourOrder = (props) => {
         return (
             <>
                 <div className="col-lg-6 col-md-6">
-                    <h3>Siparişiniz</h3>
+                    <h3>Your Order</h3>
     
                     <div className="order_table table-responsive">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Ürün</th>
-                                    <th>Toplam</th>
+                                    <th>Product</th>
+                                    <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,15 +59,15 @@ const YourOrder = (props) => {
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Alt Toplam</th>
+                                    <th>Cart Total</th>
                                     <td>{totalPrice}.00 TL</td>
                                 </tr>
                                 <tr>
-                                    <th>Kargo</th>
+                                    <th>Shipping Fee</th>
                                     <td><strong>15.00 TL</strong></td>
                                 </tr>
                                 <tr className="order_total">
-                                    <th>Sipariş Toplamı </th>
+                                    <th>Order Total </th>
                                     <td><strong>{totalPrice+15}.00 TL</strong></td>
                                 </tr>
                             </tfoot>
@@ -80,7 +80,7 @@ const YourOrder = (props) => {
                                     <div className="heading_payment" id="headingOne">
                                         <div className="" data-toggle="collapse" data-target="#collapseOne" >
                                             <input type="radio" name="payment" id="html" value="HTML" defaultChecked />
-                                            <label htmlFor="html">Para Transferi</label>
+                                            <label htmlFor="html">Money Transfer</label>
                                         </div>
                                     </div>
                                     <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -93,7 +93,7 @@ const YourOrder = (props) => {
                                     <div className="heading_payment" id="headingTwo">
                                         <div className="collapsed" data-toggle="collapse" data-target="#collapseTwo">
                                             <input type="radio" name="payment" id="javascript" value="JavaScript" />
-                                            <label htmlFor="javascript">Mobile Bankacılık</label>
+                                            <label htmlFor="javascript">Mobile Banking</label>
                                         </div>
                                     </div>
                                     <div id="collapseTwo" className="collapse" data-parent="#accordionExample">
@@ -121,7 +121,7 @@ const YourOrder = (props) => {
                         <div className="order_button pt-3">
             
                             <button onClick={()=>handleCheckoutClick()} className="theme-btn-one btn-black-overlay btn_sm">
-                                    Sipariş Ver</button>
+                                    Checkout</button>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ const YourOrder = (props) => {
         return (
             <>
             <div className="col-lg-6 col-md-6">
-                <h3>Siparişiniz Bulunmamaktadır</h3>
+                <h3>No order found</h3>
             </div>
         </>
         );

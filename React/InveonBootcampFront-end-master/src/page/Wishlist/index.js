@@ -8,7 +8,7 @@ const Favorites = () => {
     return (
         <>
             <Header />
-            <Banner title="Favoriler" />
+            <Banner title="Favorites" />
             <WishArea />
             <Footer />
 

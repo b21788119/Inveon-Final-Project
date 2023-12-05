@@ -49,7 +49,7 @@ const TopHeader = () => {
                                         :
                                         <ul className="right_list_fix">
                                             <li><Link to="/order-tracking"><i className="fa fa-truck">
-                                            </i> Siparişinizi Takip Edin!</Link></li>
+                                            </i> Track Your Order</Link></li>
                                             <li className="after_login"><img src={avater} alt="avater" />
                                                 {user.name || 'İbrahim Gökyar'} <i className="fa fa-angle-down"></i>
                                                 <ul className="custom_dropdown">

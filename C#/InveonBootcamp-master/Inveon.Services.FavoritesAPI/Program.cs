@@ -33,11 +33,12 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost3000",
-        builder => builder.WithOrigins("http://localhost:3000")
-                          .AllowAnyMethod()
-                          .AllowAnyHeader()
-                          .AllowCredentials());
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
 });
 
 builder.Services.AddAuthentication("Bearer")
@@ -110,7 +111,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
-app.UseCors("AllowLocalhost3000");
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();

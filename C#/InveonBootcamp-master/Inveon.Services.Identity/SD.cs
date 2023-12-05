@@ -29,18 +29,11 @@ namespace Inveon.Services.Identity
             {
                 new Client
                 {
-                    ClientId="client",
-                    ClientSecrets= { new Secret("secret".Sha256())},
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes={ "read", "write","profile"}
-                },
-                new Client
-                {
                     ClientId="inveon",
                     ClientSecrets= { new Secret("secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris={ "https://localhost:44378/signin-oidc", "http://localhost:3000/callback" },
-                    PostLogoutRedirectUris={"https://localhost:44378/signout-callback-oidc", "http://localhost:3000/signout-callback-oidc" },
+                    RedirectUris={"http://localhost:3000/callback"},
+                    PostLogoutRedirectUris={ "http://localhost:3000/signout-callback-oidc"},
                     AllowedScopes=new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

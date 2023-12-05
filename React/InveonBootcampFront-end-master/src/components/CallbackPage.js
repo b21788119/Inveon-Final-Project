@@ -10,8 +10,6 @@ const CallbackPage = () => {
   const dispatch = useDispatch();
 
   const successCallback = (user) => {
-    const redirectPath = user.state.path;
-    console.log(redirectPath);
     const userProfile = {
       name: user.profile.name,
       role: user.profile.role,

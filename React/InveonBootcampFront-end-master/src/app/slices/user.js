@@ -1,4 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
+
+
 
 const userSlice = createSlice({
     name: 'user',
@@ -8,8 +11,9 @@ const userSlice = createSlice({
     },
     reducers: {
         login: (state, action) => {
-            state.status = action.payload.status
-            state.user = action.payload.user
+            state.status = action.payload.status;
+            state.user = action.payload.user;
+            
         },
         register: (state, action) => {
             let { name, email, pass } = action.payload;

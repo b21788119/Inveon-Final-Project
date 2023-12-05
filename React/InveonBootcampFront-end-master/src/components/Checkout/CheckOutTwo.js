@@ -17,6 +17,11 @@ const CheckOutTwo = () => {
     return (
         <>
             <section id="checkout_two" className="ptb-100">
+            <div class="card">
+                <div class="card-header">
+                    Details
+                </div>
+                <div class="card-body">
                 <div className="container">
                     <div className="row">
                         <TopLogin />
@@ -25,30 +30,30 @@ const CheckOutTwo = () => {
                                 <div className="row">
                                     {detailsMap.size != 0 ? <div className="col-lg-6 col-md-6">
                                         <div className="checkout_form_area">
-                                            <h3>Fatura Adresi</h3>
+                                            <h3>Ticket Address</h3>
                                             <form ref={formRef} action="#">
                                                 <div className="row">
                                                     <div className="col-lg-6">
                                                         <div className="default-form-box">
-                                                            <label >Adınız<span className="text-danger">*</span></label>
+                                                            <label >Name<span className="text-danger">*</span></label>
                                                             <input name="First Name" onChange={(e)=>handleForm('FirstName', e.target.value)} type="text" className="form-control" />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-6">
                                                         <div className="default-form-box">
-                                                            <label>Soyadınız <span className="text-danger">*</span></label>
+                                                            <label>Surname <span className="text-danger">*</span></label>
                                                             <input name="Last Name" onChange={(e)=>handleForm('LastName', e.target.value)} type="text" className="form-control" />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="default-form-box">
-                                                            <label>Şirket Adı<span className="text-danger">*</span></label>
+                                                            <label>Company<span className="text-danger">*</span></label>
                                                             <input type="text" className="form-control" />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="default-form-box">
-                                                            <label htmlFor="country">Ülke<span className="text-danger">*</span></label>
+                                                            <label htmlFor="country">Country<span className="text-danger">*</span></label>
                                                             <select className="country_option nice-select wide form-control"
                                                                 name="country" id="country">
                                                                 <option defaultValue="2">Bangladesh</option>
@@ -64,7 +69,7 @@ const CheckOutTwo = () => {
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="default-form-box">
-                                                            <label>Cadde<span className="text-danger">*</span></label>
+                                                            <label>Street Name<span className="text-danger">*</span></label>
                                                             <input placeholder="Cadde Adı" type="text"
                                                                 className="form-control" />
                                                         </div>
@@ -77,32 +82,32 @@ const CheckOutTwo = () => {
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="default-form-box">
-                                                            <label>Şehir<span className="text-danger">*</span></label>
+                                                            <label>City<span className="text-danger">*</span></label>
                                                             <input type="text" className="form-control" />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="default-form-box">
-                                                            <label>Ülke<span className="text-danger">*</span></label>
+                                                            <label>Country<span className="text-danger">*</span></label>
                                                             <input type="text" className="form-control" />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-6">
                                                         <div className="default-form-box">
-                                                            <label>Telefon <span className="text-danger">*</span></label>
+                                                            <label>Phone Number <span className="text-danger">*</span></label>
                                                             <input name="Phone" onChange={(e)=>handleForm('Phone', e.target.value)} type="text" className="form-control" />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-6">
                                                         <div className="default-form-box">
-                                                            <label> Email Adresiniz<span className="text-danger">*</span></label>
+                                                            <label> Email<span className="text-danger">*</span></label>
                                                             <input name="Email" onChange={(e)=>handleForm('Email', e.target.value)} type="text" className="form-control" />
                                                         </div>
                                                     </div>
 
                                                     <div className="col-12">
                                                         <div className="order-notes">
-                                                            <label htmlFor="order_note">Sipariş Notunuz<span className="text-danger">*</span></label>
+                                                            <label htmlFor="order_note">Additional Notes<span className="text-danger">*</span></label>
                                                             <textarea id="order_note"
                                                                 placeholder=""
                                                                 className="form-control" rows="5"></textarea>
@@ -118,6 +123,11 @@ const CheckOutTwo = () => {
                         </div>
                     </div>
                 </div>
+                   
+                </div>
+                </div>
+
+                
             </section>
         </>
     )

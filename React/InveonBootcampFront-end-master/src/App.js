@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import userManager from "./userManager"
-import axios from 'axios';
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import HubConnector from "./ChatHub";
+import { useDispatch,useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import loadable from "./components/Common/loadable";
 import pMinDelay from "p-min-delay";
 import Loader from "./components/Common/Loader";
@@ -10,8 +10,7 @@ import './assets/css/style.css';
 import './assets/css/animate.min.css';
 import './assets/css/color.css';
 import './assets/css/modal.css';
-import { getAllProducts,getAllFavorites,getUserBasket,getAllUserOrders, getAllOrders} from "./app/Actions/Index";
-
+import { getAllProducts,getAllUserOrders, getAllOrders,getAllFavorites,getUserBasket} from "./app/Actions/Index";
 
 const AdminPanel = loadable(() => pMinDelay(import('./page/admin/index'), 250), { fallback: <Loader /> });
 const Fashion = loadable(() => pMinDelay(import('./page/'), 250), { fallback: <Loader /> });
@@ -31,36 +30,69 @@ const CustomerAccountDetails = loadable(() => pMinDelay(import('./page/my-accoun
 const CustomerOrderDetails = loadable(() => pMinDelay(import('./page/admin/customerOrder'), 250), { fallback: <Loader /> });
 const CallbackPage = loadable(() => pMinDelay(import('./components/CallbackPage'), 250), { fallback: <Loader /> });
 
+
+
 function App() {
-  const dispatch = useDispatch();
-  dispatch(getAllProducts());
+  let appUser = useSelector((state) => state.user.user);
+  let status = useSelector((state) => state.user.status);
+  let productLock = useSelector((state) => state.products.productLock);
+  let orderLock = useSelector((state) => state.orders.lock);
+  let connectionLock = useSelector((state) => state.chat.lock);
+  let basketLock = useSelector((state) => state.shoppingCard.lock);
+  let favoritesLock = useSelector((state) => state.products.lock);
 
 
-  useEffect(() => {
-    userManager.getUser().then(user => {
-      if (user && !user.expired) {
-        const userProfile = {
-          name: user.profile.name,
-          role: user.profile.role,
-          email: user.profile.preferred_username,
-          id_token: user.id_token,
-          access_token: user.access_token,
-          user_id: user.profile.sub
+  let dispatch = useDispatch()
+
+  useEffect(()=>{
+    if(!productLock){
+      dispatch(getAllProducts());
+    }
+
+  },[])
+
+  useEffect(()=>{
+    if(appUser == {}){
+      userManager.getUser().then(user => {
+        if (user && !user.expired) {
+          const userProfile = {
+            name: user.profile.name,
+            role: user.profile.role,
+            email: user.profile.preferred_username,
+            id_token: user.id_token,
+            access_token: user.access_token,
+            user_id: user.profile.sub
+          }
+          dispatch({ type: "user/login", payload: { user: userProfile, status: true } });
         }
-        dispatch({ type: "user/login", payload: { user: userProfile, status: true } });
-        if(userProfile.role != "Admin"){
-          dispatch(getAllFavorites(userProfile));
-          dispatch(getUserBasket(userProfile));
-          dispatch(getAllUserOrders({user:userProfile}));
-        }
-        else{
-          dispatch(getAllOrders({adminUser:userProfile}));
-        }
-        
+      });
+    }
+    if(status){
+
+      if(!connectionLock){
+        const hubConnector =  HubConnector();
+        hubConnector.connect(dispatch);
+  
       }
-    });
-  }, [dispatch]);
 
+      if(!favoritesLock && !basketLock)
+      {
+          dispatch(getAllFavorites(appUser))
+          dispatch(getUserBasket(appUser));
+      }
+     
+      if((appUser.role !== "Admin")){
+        if(!orderLock){
+          console.log("getAllUserOrders");
+          dispatch(getAllUserOrders(appUser));
+        }
+      }
+      else if(appUser.role === "Admin" && !orderLock){
+        dispatch(getAllOrders({adminUser:appUser}));
+  
+      }
+    }
+  },[dispatch,appUser,status])
 
   return (
     <div >

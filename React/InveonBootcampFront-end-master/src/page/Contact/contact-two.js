@@ -9,7 +9,7 @@ const ContactTwo = () => {
         <>
             <TopHeader />
             <Header />
-            <Banner title="Bize Ulaşın" />
+            <Banner title="Contact Us" />
             <ContactTwoArea />
             <Footer />
         </>

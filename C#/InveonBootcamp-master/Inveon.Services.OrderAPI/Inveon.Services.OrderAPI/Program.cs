@@ -36,13 +36,13 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAny",
-         builder =>
-         {
-             builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-         });
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:3000", "http://localhost:3001")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
+    });
 });
 
 builder.Services.AddAuthentication("Bearer")
@@ -111,7 +111,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
-app.UseCors("AllowAny");
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 
