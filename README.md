@@ -25,6 +25,20 @@ E-Commerce Application Using React.js and .Net Framework
       <li>Send Message (Admin, Customer)</li>
       <li>Receive Message extends View Message (Admin, Customer)</li>
     </ul>
+    <div>
+         <h3><strong>Screenshots : </strong></h3>
+        <table>
+          <tr>
+            <td><img src="Screenshots/1.png" alt="Image 1"></td>
+            <td><img src="Screenshots/2.png" alt="Image 2"></td>
+          </tr>
+          <tr>
+            <td><img src="Screenshots/3.png" alt="Image 3"></td>
+            <td><img src="Screenshots/4.png" alt="Image 4"></td>
+          </tr>
+        </table>
+        
+    </div>
 </div>
 
 
