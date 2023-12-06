@@ -6,7 +6,6 @@ E-Commerce Application Using React.js and .Net Framework
     <h3><strong>Implemented Use Cases: </strong></h3>
     <ul>
         <li>Login (Admin, Customer)</li>
-      <li>Login (Admin, Customer)</li>
       <li>Logout (Admin, Customer)</li>
       <li>View All Products (Admin, Customer)</li>
       <li>Filter Products includes Filter by Category, Filter by Price, Filter by Name (Customer)</li>
