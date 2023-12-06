@@ -11,18 +11,7 @@ export const getAllProducts = createAsyncThunk('products/getAllProducts', async 
   return response.data;
 });
 
-// Action to get products by category
-export const getProductsByCategory = createAsyncThunk('products/getProductsByCategory', async (categoryName) => {
-  //console.log("Inside get products by category: ", categoryName);
-  try {
-    const response = await axios.get(`https://localhost:5050/api/products/byCategory/${categoryName}`);
-    //console.log("API Response:", response.data);
-    return  { categoryName, "_products": response.data };
-  } catch (error) {
-    console.error("API Error:", error);
-    throw error;
-  }
-});
+
 
 export const getProductByID = createAsyncThunk('products/getProductByID', async (productId) => {
   //console.log("Inside get products by id: ", productId);
@@ -231,6 +220,39 @@ export const addToMyBasket = createAsyncThunk('cart/addToMyBasket', async ({ use
         title: 'Error',
         text: 'Failed to add the item to your basket. Please try again.',
       });
+    
+    }
+  } catch (error) {
+    // Handle the case where an error occurred
+    console.error('API Error:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Something went wrong. Please try again.',
+    });
+    
+  }
+}
+);
+
+
+export const updateBasket = createAsyncThunk('cart/updateBasket', async (cartDto) => {
+  try {
+    const response = await axios.post(
+      `https://localhost:5050/api/cart/UpdateCart`,
+      cartDto,
+    );
+
+    const responseData = response.data;
+
+    console.log(responseData);
+
+    if (responseData.isSuccess) {
+      // Handle the case where the request is successful
+
+      return responseData.result;
+    } else {
+      // Handle the case where the request is not successful
     
     }
   } catch (error) {

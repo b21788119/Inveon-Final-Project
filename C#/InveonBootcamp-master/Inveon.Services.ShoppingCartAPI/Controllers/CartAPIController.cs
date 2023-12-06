@@ -81,7 +81,7 @@ namespace Inveon.Services.ShoppingCartAPI.Controllers
         }
 
         [HttpPost("UpdateCart")]
-        public async Task<object> UpdateCart(CartDto cartDto)
+        public async Task<object> UpdateCart([FromBody] CartDto cartDto)
         {
             try
             {

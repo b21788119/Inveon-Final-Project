@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import React, { useEffect } from "react"
 import { useSelector, useDispatch }  from "react-redux";
-import { getProductByID,addNewFavorite,removeFromFavoriteList,addToMyBasket} from "../../../app/Actions/Index";
+import { getProductByID,addNewFavorite,removeFromFavoriteList,addToMyBasket,updateBasket} from "../../../app/Actions/Index";
 import { useParams } from 'react-router-dom';
 import { RatingStar } from "rating-star";
 
@@ -20,8 +20,10 @@ const ProductDetailsTwo = () => {
     let user = useSelector((state) => state.user.user);
     let products = useSelector((state) => state.products.products);
     let product = products.filter(product=>product.productId == parseInt(product_id))[0];
+    let shoppingCard = useSelector((state) => state.shoppingCard.detailsMap);
+    const currentCount = shoppingCard.get(parseInt(product_id)).count;
 
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(currentCount);
     const incNum = () => {
         setCount(count + 1)
     }
@@ -38,7 +40,32 @@ const ProductDetailsTwo = () => {
 
     // Add to cart
     const addToCart = async () => {
-       dispatch(addToMyBasket({user:user,product:product,count:count}));
+        var cartDto = {};
+        cartDto = shoppingCard.get(product.productId);
+        if(cartDto != {}){
+            const currentCart = shoppingCard.get(product.productId);
+            const difference = (count-currentCart.count);
+            let cartHeader = currentCart.cartHeader;
+              let cartDetails = [
+                {
+                  CartDetailsId: currentCart.cartDetailsId,
+                  CartHeader: cartHeader,
+                  CartHeaderId: currentCart.cartHeaderId,
+                  Product: product,
+                  ProductId: product.productId,
+                  Count: difference,
+                }
+              ];
+              let cartDtoFinal = {
+                CartHeader: cartHeader,
+                CartDetails: cartDetails
+              };
+              dispatch(updateBasket(cartDtoFinal));
+
+        }
+        else{
+            dispatch(addToMyBasket({user:user,product:product,count:count}));
+        }
     }
 
     const isFavorite = () =>{

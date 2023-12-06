@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductData } from "../data/ProductData";
 import Swal from "sweetalert2";
-import { getProductByID, getUserBasket, addToMyBasket,removeFromBasket, checkout } from "../Actions/Index"
+import { getProductByID, getUserBasket, addToMyBasket,removeFromBasket, checkout, updateBasket } from "../Actions/Index"
 import { enableMapSet } from 'immer';
 
 // Enable the MapSet plugin
@@ -127,7 +127,28 @@ const shoppingcartSlice = createSlice({
             .addCase(checkout.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
-            });
+            })
+            .addCase(updateBasket.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(updateBasket.fulfilled, (state, action) => {
+                state.loading = false;
+                console.log("payload");
+                console.log(action.payload);
+                state.detailsMap.set(action.payload.cartDetails[0].productId,action.payload.cartDetails[0]);
+                var total = 0;
+                Array.from(state.detailsMap.values()).forEach((detail)=>{
+                    total+=detail.count;
+                })
+                state.totalCount = total;
+                
+            })
+            .addCase(updateBasket.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
+        
     },
 })
 

@@ -54,7 +54,7 @@ const CartViewThree = () => {
                                                 <td className="product-price">$65.00</td>
                                                 <td className="product_quantity">
                                                     <label>Quantity</label>
-                                                    <input min="1" max="100" value="1" type="number" />
+                                                    <input  min="1" max="100" value="1" type="number" />
                                                 </td>
                                                 <td className="product_total">$130.00</td>
                                             </tr>
