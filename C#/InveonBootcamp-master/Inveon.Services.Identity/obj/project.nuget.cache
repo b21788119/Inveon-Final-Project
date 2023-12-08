@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nNqxQsyoVAExbYs0TvtxsRla0ZibdqpP1+cAKqP3bIkmmmOfxQuhG6n4R0j6FCDjWhIS4f9J9UdLa/6v1mbXVQ==",
+  "dgSpecHash": "F5Mzs5SnsTV8rXrn0f3WVQo3RxDTfBGVnjzYuWMNug9cP7FtE5DGfO4mcgMcBv2mbNgfMGn8/d6LZL7FQ78J7g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.Identity\\Inveon.Services.Identity.csproj",
+  "projectFilePath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.Identity\\Inveon.Services.Identity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dyavu\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\dyavu\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

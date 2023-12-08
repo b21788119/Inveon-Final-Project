@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj": {}
+    "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj": {
+    "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj",
+        "projectUniqueName": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj",
         "projectName": "Inveon.Services.RabbitMQConsumer",
-        "projectPath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj",
+        "projectPath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj",
         "packagesPath": "C:\\Users\\dyavu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\obj\\",
+        "outputPath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

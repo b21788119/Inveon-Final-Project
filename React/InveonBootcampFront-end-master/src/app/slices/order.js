@@ -11,6 +11,9 @@ const ordersSlice = createSlice({
         
     },
     reducers: {
+        AddNewOrder: (state, action) => {
+            state.allUserOrders.push(action.payload.order);
+        },
        
     },
     extraReducers: (builder) => {

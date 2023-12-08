@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductData } from "../data/ProductData";
 import Swal from "sweetalert2";
-import { getProductByID, getUserBasket, addToMyBasket,removeFromBasket, checkout, updateBasket } from "../Actions/Index"
+import { getProductByID, getUserBasket, addToMyBasket,removeFromBasket, checkout, updateBasket, getAllUserOrders } from "../Actions/Index"
 import { enableMapSet } from 'immer';
+import { useDispatch } from "react-redux";
 
 // Enable the MapSet plugin
 enableMapSet();
@@ -25,7 +26,9 @@ const shoppingcartSlice = createSlice({
         AddToCart: (state, action) => {
             
         },
-
+        completeCurrentOrder(state){
+            state.lastOrderSuccess = false;
+        },
         updateCart: (state, action) => {
             
         },
@@ -35,7 +38,9 @@ const shoppingcartSlice = createSlice({
         },
 
         clearOrderFlag:(state) => {
-            state.lastOrderSuccess = false;
+            if(state.lastOrderSuccess === true){
+                state.lastOrderSuccess = false;
+            };
         },
         
         clearCart: (state) => {
@@ -134,8 +139,7 @@ const shoppingcartSlice = createSlice({
             })
             .addCase(updateBasket.fulfilled, (state, action) => {
                 state.loading = false;
-                console.log("payload");
-                console.log(action.payload);
+                console.log("bura abi");
                 state.detailsMap.set(action.payload.cartDetails[0].productId,action.payload.cartDetails[0]);
                 var total = 0;
                 Array.from(state.detailsMap.values()).forEach((detail)=>{

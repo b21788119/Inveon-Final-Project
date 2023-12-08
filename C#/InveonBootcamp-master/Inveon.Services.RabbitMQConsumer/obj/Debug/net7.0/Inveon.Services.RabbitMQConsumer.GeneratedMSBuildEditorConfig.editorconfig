@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Inveon.Services.RabbitMQConsumer
-build_property.ProjectDir = C:\Users\dyavu\Desktop\INVEON\C#\InveonBootcamp-master\Inveon.Services.RabbitMQConsumer\
+build_property.ProjectDir = C:\Users\dyavu\Desktop\Inveon Final\Inveon-Final-Project\C#\InveonBootcamp-master\Inveon.Services.RabbitMQConsumer\

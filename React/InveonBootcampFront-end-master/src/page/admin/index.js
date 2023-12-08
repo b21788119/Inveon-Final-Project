@@ -9,6 +9,7 @@ const AdminPanel = () => {
     let dispatch = useDispatch();
     let adminUser = useSelector((state) => state.user.user);
     let allOrders = useSelector((state) => state.orders.allOrders);
+    let reversedOrders = [...allOrders].reverse();
     let allProducts = useSelector((state) => state.products.products);
     const [tabControl,setTab] = useState("true");
 
@@ -66,7 +67,7 @@ const AdminPanel = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {allOrders.map(order => (
+                    {reversedOrders.map(order => (
                         <tr key={order.orderHeaderId}>
                             <th scope="row">{order.orderHeaderId}</th>
                             <td>{order.firstName}</td>

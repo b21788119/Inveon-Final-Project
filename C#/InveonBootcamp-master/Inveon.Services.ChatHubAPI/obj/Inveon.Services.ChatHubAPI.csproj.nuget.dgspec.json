@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj": {}
+    "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj": {
+    "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj",
+        "projectUniqueName": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj",
         "projectName": "Inveon.Services.ChatHubAPI",
-        "projectPath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj",
+        "projectPath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj",
         "packagesPath": "C:\\Users\\dyavu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\obj\\",
+        "outputPath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -2,7 +2,7 @@ import React,{ useEffect }  from 'react'
 import {Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { checkout } from '../../app/Actions/Index';
+import { checkout, getAllUserOrders } from '../../app/Actions/Index';
 
 
 const YourOrder = (props) => {

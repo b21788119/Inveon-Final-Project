@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj": {}
+    "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj": {
+    "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj",
+        "projectUniqueName": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj",
         "projectName": "Inveon.Services.FavoritesAPI",
-        "projectPath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj",
+        "projectPath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\Inveon.Services.FavoritesAPI.csproj",
         "packagesPath": "C:\\Users\\dyavu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\obj\\",
+        "outputPath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.FavoritesAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

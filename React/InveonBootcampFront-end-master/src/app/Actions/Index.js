@@ -249,7 +249,8 @@ export const updateBasket = createAsyncThunk('cart/updateBasket', async (cartDto
 
     if (responseData.isSuccess) {
       // Handle the case where the request is successful
-
+      console.log("buraya bak");
+      console.log(responseData);
       return responseData.result;
     } else {
       // Handle the case where the request is not successful

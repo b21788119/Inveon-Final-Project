@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZaqepjG0q3ZkpyK1Ff9vnMBIsVe/+pIIdyZxZSXnAWix+LK+/UWCz+/QSn1nOrBKWS4149DBKBctz9+Ddyab9Q==",
+  "dgSpecHash": "PcX8F9KeST7Y4oTbWUE013rE3d4SD8wm1VJYXsJq8exz/fs96do/w31WeCDDJ2ZnxHkeymJ0/MbPCcHyD2j3Sw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj",
+  "projectFilePath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.ChatHubAPI\\Inveon.Services.ChatHubAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dyavu\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\8.0.0\\microsoft.aspnetcore.connections.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\dyavu\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\8.0.0\\microsoft.aspnetcore.http.connections.client.8.0.0.nupkg.sha512",

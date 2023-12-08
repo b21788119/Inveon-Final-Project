@@ -21,7 +21,7 @@ const ProductDetailsTwo = () => {
     let products = useSelector((state) => state.products.products);
     let product = products.filter(product=>product.productId == parseInt(product_id))[0];
     let shoppingCard = useSelector((state) => state.shoppingCard.detailsMap);
-    const currentCount = shoppingCard.get(parseInt(product_id)).count;
+    const currentCount = shoppingCard.get(parseInt(product_id)) ? shoppingCard.get(parseInt(product_id)).count : 1;
 
     const [count, setCount] = useState(currentCount);
     const incNum = () => {
@@ -40,30 +40,40 @@ const ProductDetailsTwo = () => {
 
     // Add to cart
     const addToCart = async () => {
-        var cartDto = {};
+        var cartDto;
         cartDto = shoppingCard.get(product.productId);
-        if(cartDto != {}){
+        if(cartDto){
+            console.log("güncelleme");
             const currentCart = shoppingCard.get(product.productId);
+            
             const difference = (count-currentCart.count);
-            let cartHeader = currentCart.cartHeader;
+            let cartHeader = {
+                CartHeaderId: currentCart.cartHeaderId,
+                UserId: user.user_id,
+                CouponCode: "null"
+              };
               let cartDetails = [
                 {
                   CartDetailsId: currentCart.cartDetailsId,
-                  CartHeader: cartHeader,
+                  CartHeader:cartHeader,
                   CartHeaderId: currentCart.cartHeaderId,
                   Product: product,
                   ProductId: product.productId,
                   Count: difference,
                 }
               ];
+              console.log(cartDetails);
               let cartDtoFinal = {
                 CartHeader: cartHeader,
                 CartDetails: cartDetails
               };
+              console.log("details")
+              console.log(cartDetails);
               dispatch(updateBasket(cartDtoFinal));
 
         }
         else{
+            console.log("ekleme");
             dispatch(addToMyBasket({user:user,product:product,count:count}));
         }
     }

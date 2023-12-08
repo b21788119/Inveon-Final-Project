@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Eu5pjnTm8rFyX7TjvxycjARa3JWiA2GpJMjVXdC9/lkVryhmKBRy5dtPtQuEdm/U5bZYsmG3nRYrR9sW/tmDlA==",
+  "dgSpecHash": "sOiGC758bYnA0I2sSmWgftuvh2Bgh1Zk0xqVteU2Mq582y6JsWRf6KbuhEsipEx4J5xw/56zS5bQ1W5XR/ULtw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dyavu\\Desktop\\INVEON\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj",
+  "projectFilePath": "C:\\Users\\dyavu\\Desktop\\Inveon Final\\Inveon-Final-Project\\C#\\InveonBootcamp-master\\Inveon.Services.RabbitMQConsumer\\Inveon.Services.RabbitMQConsumer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dyavu\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\dyavu\\.nuget\\packages\\mailkit\\4.2.0\\mailkit.4.2.0.nupkg.sha512",

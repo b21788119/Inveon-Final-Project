@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Order = () => {
     let allOrders = useSelector((state) => state.orders.allUserOrders);
+    let reversedOrders = [...allOrders].reverse();
     const thStyle = {
         verticalAlign: 'middle',
       };
@@ -35,7 +36,7 @@ const Order = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    {allOrders.map(order => (
+                    {reversedOrders.map(order => (
                         <tr key={order.orderHeaderId}>
                             <td>{order.orderHeaderId}</td>
                                 <td>{new Date(order.orderTime).toLocaleString('en-US')}</td>
