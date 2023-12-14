@@ -1,5 +1,5 @@
 # Inveon-Final-Project
-E-Commerce Application Using React.js and .Net Framework
+E-Commerce Application Using React.js and .Net Core
 
 <div>
     <h3><strong>ACTORS : </strong>Admin, Customer</h3>
